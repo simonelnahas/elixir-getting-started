@@ -1,14 +1,27 @@
 # Setting up Nix with Fish shell for Elixir Repo
 
+Nix is a package manager for declaring shell packages that should be used for each project. 
+Once setup we don't have to worry about having the right packages installed to run a project it just works.
+
+In this example I go through how to set it up for [Elixir](https://elixir-lang.org).
+I use the [Fish](https://fishshell.com) shell.
+
+I carried out the following steps on a fresh install of macOS 12.4 Monterey on a Macbook Pro M1.
+
+
 ## Install Nix
 
 `$ sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon`
 
-Read through guide:
-    https://nix.dev/tutorials/install-nix
-    https://nix.dev/tutorials/ad-hoc-developer-environments
-    https://nix.dev/tutorials/towards-reproducibility-pinning-nixpkgs
-    https://nix.dev/tutorials/declarative-and-reproducible-developer-environments
+Please read through and understand these chapters on Nix first:
+
+https://nix.dev/tutorials/install-nix
+
+https://nix.dev/tutorials/ad-hoc-developer-environments
+
+https://nix.dev/tutorials/towards-reproducibility-pinning-nixpkgs
+
+https://nix.dev/tutorials/declarative-and-reproducible-developer-environments
 
 
 ## Setup Elixir project repo
@@ -18,7 +31,7 @@ I used niv packager manager to initialize a nix file like this:
 
 `$ nix-shell -p niv --run 'niv init'`
 
-this created `nix/sources.nix` and `nix/sources.json`
+This created `nix/sources.nix` and `nix/sources.json`
 
 Then in the project root i created the `shell.nix` file:
 
@@ -44,7 +57,7 @@ But we want it to automatically switch between shells with the dependencies defi
 ## Install `direnv`
 Since this needs to be installed globally we will use Homebrew to install it. We could also use Nix HomeManager, but this isn't worth the effort for now.
 
-Install homebrew:
+### Install homebrew (or skip if already installed):
 
 `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
@@ -53,7 +66,7 @@ Add homebrew to fish path:
 `echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.config/fish/config.fish
     eval "$(/opt/homebrew/bin/brew shellenv)"`
 
-install `direnv`
+### Install `direnv`
 
 `$ brew install direnv`
 
