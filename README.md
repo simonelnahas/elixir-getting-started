@@ -1,7 +1,7 @@
 # Setting up Nix with Fish shell for Elixir Repo
 
 Nix is a package manager for declaring shell packages that should be used for each project. 
-Once setup we don't have to worry about having the right packages installed to run a project it just works.
+Nix will install the right packages to run a project automatically.
 
 In this example I go through how to set it up for [Elixir](https://elixir-lang.org).
 I use the [Fish](https://fishshell.com) shell.
