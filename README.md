@@ -1,4 +1,4 @@
-# Setting up Nix with Fish shell for Elixir Repo
+# Setting up Nix with Fish shell for LFE Repo
 
 Nix is a package manager for declaring shell packages that should be used for each project. 
 Nix will install the right packages to run a project automatically.
@@ -24,7 +24,7 @@ https://nix.dev/tutorials/towards-reproducibility-pinning-nixpkgs
 https://nix.dev/tutorials/declarative-and-reproducible-developer-environments
 
 
-## Setup Elixir project repo
+## Setup LFE project repo
 
 Inspired by [this blog post](https://www.mathiaspolligkeit.com/dev/elixir-dev-environment-with-nix/)
 I used niv packager manager to initialize a nix file like this:
@@ -44,7 +44,7 @@ Then in the project root i created the `shell.nix` file:
 
 pkgs.mkShell {
   buildInputs = [
-    pkgs.elixir
+    pkgs.lfe
     pkgs.niv
   ];
 }
@@ -86,10 +86,21 @@ direnv: loading ~/Documents/Developer/elixir-getting-started/.envrc
 direnv: using nix
 direnv: export +AR +AS +CC +CONFIG_SHELL 
 ...
-$ iex
-...
-iex(1)> 40 + 2
-42
+$ lfe
+Erlang/OTP 21 [erts-10.3.5.19] [source] [64-bit] [smp:10:10] [ds:10:10:10] [async-threads:1]
+
+   ..-~.~_~---..
+  (      \\     )    |   A Lisp-2+ on the Erlang VM
+  |`-.._/_\\_.-':    |   Type (help) for usage info.
+  |         g |_ \   |
+  |        n    | |  |   Docs: http://docs.lfe.io/
+  |       a    / /   |   Source: http://github.com/rvirding/lfe
+   \     l    |_/    |
+    \   r     /      |   LFE v1.3 (abort with ^G)
+     `-E___.-'
+
+lfe> (+ 2 2)
+4
 ```
 
-Now we can run Elixir in our repo, without worrying about contaminating other projects with dependencies.
+Now we can run LFE in our repo, without worrying about contaminating other projects with dependencies.

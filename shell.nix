@@ -4,7 +4,8 @@
 
 pkgs.mkShell {
   buildInputs = [
-    pkgs.elixir
+    pkgs.lfe
+    pkgs.rebar3
     pkgs.niv
   ];
 }
